@@ -10,11 +10,11 @@ function getQueryName(name) {
         var returnURL = response.data[3][0];
         var arr = returnURL.split('/');
         // console.log(URL) ;
-        console.log(arr[arr.length-1]);
+        // console.log(arr[arr.length-1]);
         resolve(arr[arr.length-1]);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         reject(err);
       });
   });
@@ -32,9 +32,12 @@ function getQueryLanguage(encodedTitle, language) {
         if(langlinks === undefined) {
           reject('There is no language support for this item');
         }
-        var translate = Object.values(langlinks[0])[2];
-        console.log(translate);
-        resolve(translate);
+        else {
+          var translate = Object.values(langlinks[0])[2];
+          // console.log(translate);
+          resolve(translate);
+        }
+
       });
   });
 };
@@ -44,7 +47,7 @@ function getExtract(title, language) {
   title = encodeURI(title);
   const URL = `https://${language}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${title}`;
   return new Promise((resolve, reject) => {
-    console.log(URL);
+    // console.log(URL);
     axios.get(URL)
       .then((response) => {
         var pages = response.data.query.pages;
@@ -56,27 +59,24 @@ function getExtract(title, language) {
   })
 }
 
+// getQueryName("sunflowers van gogh")
+//   .then((encodedTitle) => {
+//     getQueryLanguage(encodedTitle, "zh")
+//       .then((translateTitle) => {
+//         getExtract(translateTitle, "zh")
+//           .then((extract) => {
+//             console.log(extract);
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//           })
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-getQueryName("sunflowers van gogh")
-  .then((encodedTitle) => {
-    getQueryLanguage(encodedTitle, "zh")
-      .then((translateTitle) => {
-        getExtract(translateTitle, "zh")
-          .then((extract) => {
-            console.log(extract);
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-// getQueryLanguage(title, "zh");
-
-module.exports={getQueryName, getQueryLanguage, getQueryName, getExtract};
+module.exports={getQueryName, getQueryLanguage, getExtract};

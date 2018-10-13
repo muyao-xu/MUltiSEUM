@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 const { docuDetect, logoDetect } = require('./vision.js');
 const { storeFile } = require('./storeFile.js');
+const { getQueryName, getQueryLanguage, getExtract } = require('./wiki.js');
 
 
 
@@ -18,8 +19,6 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/imgUpload.html');
 });
 
-// takes the file in the form and store it to the file system
-// 		filetoupload: the image file that th user is going to upload
 app.post('/ImgInfo', (req, res) => {
 	var form = new formidable.IncomingForm();
 	form.parse(req, (err, fields, files) => {
@@ -39,6 +38,38 @@ app.post('/OCRText', (req, res) => {
         res.send(result.text);
       });
     });
+});
+
+app.get('/Info/:query/:language', (req, res) => {
+  var query = req.params.query;
+  var language = req.params.language;
+  getQueryName(query)
+    .then((encodedTitle) => {
+      if (language === 'en') {
+        getExtract(encodedTitle, 'en')
+          .then((extract) => {
+            // console.log(extract);
+            res.send(extract);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+      else {
+        getQueryLanguage(encodedTitle, language)
+          .then((translateTitle) => {
+            getExtract(translateTitle, language)
+              .then((extract) => {
+                // console.log(extract);
+                res.send(extract);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+      }
+    });
+
 });
 
 app.listen(3000, ()=> {
