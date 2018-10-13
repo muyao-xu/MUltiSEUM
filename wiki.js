@@ -1,9 +1,8 @@
 const axios = require('axios');
-
-
+const url = require('url');
 
 function getQueryName(name) {
-  var name = 'Le%20Jardin%20de%20l%27artiste%20à%20Giverny';
+  const name = encodeURI("Le Jardin de 'lartiste à Giverny");
   const URL = `https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=${name}&limit=1`;
   return new Promise((resolve, reject) => {
     axios.get(url)
@@ -18,3 +17,5 @@ function getQueryName(name) {
       });
   });
 };
+
+module.exports={getQueryName};
