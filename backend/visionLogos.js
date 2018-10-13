@@ -15,10 +15,6 @@ function logoDetect (fileName) {
         .logoDetection(fileName)
         .then(results => {
           const logos = results[0].logoAnnotations;
-          // console.log('Logos:');
-          // logos.forEach(logo => console.log(logo));
-          // console.log(logos[0].description);
-          // return logos[0].description;
           resolve(logos[0].description);
         })
         .catch(err => {

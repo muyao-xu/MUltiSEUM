@@ -23,7 +23,23 @@ function docuDetect (fileName) {
         console.error('ERROR:', err);
         reject(err);
       });
-  })
+  });
 }
 
-module.exports = {docuDetect};
+// Performs logo detection on the local file
+function logoDetect (fileName) {
+    return new Promise((resolve, reject) => {
+      client
+        .logoDetection(fileName)
+        .then(results => {
+          const logos = results[0].logoAnnotations;
+          resolve(logos[0].description);
+        })
+        .catch(err => {
+          console.error('ERROR:', err);
+          reject(err);
+        });
+      });
+}
+
+module.exports = {docuDetect, logoDetect};
