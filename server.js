@@ -37,7 +37,7 @@ app.post('/upload', (req, res) => {
   	  });
 
       // docuDetect(newpath);
-      logoDetect(newpath).then( (description) => {
+      logoDetect(newpath).then((description) => {
         console.log(description);
       });
     });
