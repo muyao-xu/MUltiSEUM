@@ -28,27 +28,50 @@ function getQueryLanguage(encodedTitle, language) {
     axios.get(URL)
       .then((response) => {
         var pages = response.data.query.pages;
-        var why = Object.keys(pages)[0];
         var langlinks = Object.values(pages)[0].langlinks;
         if(langlinks === undefined) {
           reject('There is no language support for this item');
         }
         var translate = Object.values(langlinks[0])[2];
-        // console.log(translate);
+        console.log(translate);
         resolve(translate);
       });
   });
 };
 
 // get the plain text of extract
-function getExtract()
+function getExtract(title, language) {
+  title = encodeURI(title);
+  const URL = `https://${language}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${title}`;
+  return new Promise((resolve, reject) => {
+    console.log(URL);
+    axios.get(URL)
+      .then((response) => {
+        var pages = response.data.query.pages;
+        var extract = Object.values(pages)[0].extract;
+        resolve(extract);
+      }).catch((err)=>{
+        reject (err);
+      })
+  })
+}
 
-getQueryName("The Triumph of Galatea")
+
+getQueryName("sunflowers van gogh")
   .then((encodedTitle) => {
     getQueryLanguage(encodedTitle, "zh")
+      .then((translateTitle) => {
+        getExtract(translateTitle, "zh")
+          .then((extract) => {
+            console.log(extract);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      })
       .catch((err) => {
         console.log(err);
-      }) ;
+      });
   })
   .catch((err) => {
     console.log(err);
