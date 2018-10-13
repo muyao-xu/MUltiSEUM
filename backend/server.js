@@ -22,8 +22,7 @@ app.get('/', (req, res) => {
 // takes the file in the form and store it to the file system
 // 		roomID: id of current user's room
 // 		filetoupload: the image file that th user is going to upload
-app.post('/upload', (req, res) => {
-  console.log('here');
+app.post('/getInfo', (req, res) => {
 	var form = new formidable.IncomingForm();
   	form.parse(req, (err, fields, files) => {
   	  var roomID = fields.roomID;
@@ -37,13 +36,32 @@ app.post('/upload', (req, res) => {
   	  });
 
       // docuDetect(newpath);
-      logoDetect(newpath).then((description) => {
+      logoDetect(newpath).then(() => {
         console.log(description);
       });
     });
 });
 
-// api call to google text ocr
+app.post('/upload', (req, res) => {
+  var form = new formidable.IncomingForm();
+    form.parse(req, (err, fields, files) => {
+      storeFile(files.filetoupload);
+
+      // // docuDetect(newpath);
+      // logoDetect(newpath).then(() => {
+      //   console.log(description);
+      // });
+    });
+})
+
+// save file to the local file system
+function storeFile(file) {
+  var newpath = IMAGE_PATH + file.name;
+  fs.rename(file.path, newpath, (err) => {
+    if (err) throw err;
+  });
+  return newpath;
+}
 
 
 app.listen(3000, ()=> {

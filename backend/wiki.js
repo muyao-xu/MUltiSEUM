@@ -79,4 +79,4 @@ getQueryName("sunflowers van gogh")
 
 // getQueryLanguage(title, "zh");
 
-module.exports={getQueryName};
+module.exports={getQueryName, getQueryLanguage, getQueryName, getExtract};
