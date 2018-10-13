@@ -25,9 +25,9 @@ function getQueryLanguage(encodedTitle, language) {
     axios.get(URL)
       .then((response) => {
         var pages = response.data.query.pages;
-        var key = Object.keys(pages)[0];
-        var langlinks = pages.key.langlinks;
-        var translate = langlinks."/*";
+        var why = Object.keys(pages)[0];
+        var langlinks = Object.values(pages)[0].langlinks;
+        var translate = Object.values(langlinks[0])[2];
         console.log(translate);
       });
   });
