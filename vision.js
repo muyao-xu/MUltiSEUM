@@ -11,16 +11,19 @@ const client = new vision.ImageAnnotatorClient();
 
 // Read a local image as a text document
 function docuDetect (fileName) {
-  client
-    .documentTextDetection(fileName)
-    .then(results => {
-      const fullTextAnnotation = results[0].fullTextAnnotation;
-      console.log(`Full text: ${fullTextAnnotation.text}`);
-      return fullTextAnnotation;
-    })
-    .catch(err => {
-      console.error('ERROR:', err);
-    });
+  return new Promise((resolve, reject) => {
+    client
+      .documentTextDetection(fileName)
+      .then(results => {
+        const fullTextAnnotation = results[0].fullTextAnnotation;
+        // console.log(`Full text: ${fullTextAnnotation.text}`);
+        resolve(fullTextAnnotation);
+      })
+      .catch(err => {
+        console.error('ERROR:', err);
+        reject(err);
+      });
+  })
 }
 
 module.exports = {docuDetect};

@@ -25,7 +25,7 @@ function logoDetect (fileName) {
           console.error('ERROR:', err);
           reject(err);
         });
-});
+      });
 }
 
 module.exports = {logoDetect};
