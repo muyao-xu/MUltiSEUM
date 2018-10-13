@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// the domain name for the artwork
 function getQueryName(name) {
   name = encodeURI(name);
   const URL = `https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=${name}&limit=1`;
@@ -19,6 +20,7 @@ function getQueryName(name) {
   });
 };
 
+// get the domain name in another language
 function getQueryLanguage(encodedTitle, language) {
   const URL = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=langlinks&titles=${encodedTitle}&utf8=1&llprop=url&lllang=${language}`;
   return new Promise((resolve, reject) => {
@@ -37,6 +39,9 @@ function getQueryLanguage(encodedTitle, language) {
       });
   });
 };
+
+// get the plain text of extract
+function getExtract()
 
 getQueryName("The Triumph of Galatea")
   .then((encodedTitle) => {
