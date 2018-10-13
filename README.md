@@ -8,3 +8,13 @@ for each shell session run the following command
 
 - to start nodemon
 `npx nodemon <filename>`
+
+- test cases
+  -- mona lisa
+  -- sunflowers van gogh
+  -- the last supper
+  -- Diana and Actaeon
+  -- Girl with a Pearl Earring
+
+- not suppprted
+-- Triumph of Galatea
