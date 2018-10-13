@@ -4,7 +4,7 @@ var fs = require('fs');
 const bodyParser = require('body-parser');
 
 const {docuDetect} = require('./vision.js');
-
+const {logoDetect} = require('./visionLogos.js');
 
 const IMAGE_PATH = __dirname + '/files/';
 
@@ -36,7 +36,10 @@ app.post('/upload', (req, res) => {
   	  	if (err) throw err;
   	  });
 
-      docuDetect(newpath);
+      // docuDetect(newpath);
+      logoDetect(newpath).then( (description) => {
+        console.log(description);
+      });
     });
 });
 
