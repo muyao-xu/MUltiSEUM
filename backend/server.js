@@ -1,7 +1,7 @@
 const express = require('express');
 var formidable = require('formidable');
 const bodyParser = require('body-parser');
-
+const { User } = require('./user.js');
 const { docuDetect, logoDetect } = require('./vision.js');
 const { storeFile } = require('./storeFile.js');
 const { getQueryName, getQueryLanguage, getExtract } = require('./wiki.js');
@@ -17,6 +17,15 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
 	app.set('view engine', 'ejs');
 	res.sendFile(__dirname + '/public/imgUpload.html');
+});
+
+app.get('/user/:username/:language', (req, res) => {
+	var name = req.params.username;
+	var language = req.params.language;
+
+	var user = new User(name);
+	user.setLanguage(language);
+	console.log(user);
 });
 
 app.post('/ImgInfo', (req, res) => {

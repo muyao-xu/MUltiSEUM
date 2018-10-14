@@ -1,12 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
-// import {
-//   createStackNavigator,
-// } from 'react-navigation';
 
-
-class HomePage extends React.Component {
-
+export default class HomePage extends React.Component {
   static navigationOptions = {
     //title: 'Welcome',
   };
@@ -57,5 +52,3 @@ const styles = {
     marginTop: 300
   }
 };
-
-export default HomePage;

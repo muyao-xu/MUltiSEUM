@@ -12,7 +12,6 @@ import ImagePicker from 'react-native-image-picker';
 //import Language from './src/Language';
 
 export default class Upload extends React.Component {
-
   static navigationOptions = {
     //title: 'Welcome',
   };
@@ -87,11 +86,9 @@ export default class Upload extends React.Component {
         .catch((error) => {
           console.error(error);
         });
-
-
       }
     });
-  }
+    }
 
   selectOCRTapped() {
     const options = {
@@ -122,7 +119,7 @@ export default class Upload extends React.Component {
         // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
         this.setState({
-          avatarSource: source
+          videoSource: source
         });
         // get the name
         var data = new FormData();
@@ -198,7 +195,6 @@ export default class Upload extends React.Component {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
