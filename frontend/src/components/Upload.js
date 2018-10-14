@@ -191,7 +191,13 @@ export default class Upload extends React.Component {
         }
 
         <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-          navigate('Result', this.state.information)}
+          navigate('Result', this.state.information
+          // {
+            // title: this.state.information.title,
+            // extract: this.state.information.extract,
+            // url: this.state.information.url
+          // }
+        )}
         >
           <View style={styles.textStyle}>
           <Text>Next</Text>

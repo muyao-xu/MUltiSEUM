@@ -54,7 +54,7 @@ export default class Language extends React.Component {
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a Language...',
-                        value: null,
+                        value: 'zh',
                     }}
                     items={this.state.items}
                     onValueChange={(value) => {

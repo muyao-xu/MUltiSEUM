@@ -3,22 +3,36 @@ import { TouchableOpacity, View, Text } from 'react-native';
 
 export default class HomePage extends React.Component {
   constructor(props) {
+    console.log('props: ', props);
       super(props);
   }
   static navigationOptions = {
     //title: 'Welcome',
   };
-  // var info = this.props.navigation.getParam('information', 'There is no information in our database right now');
-  // console.log(info);
+  // var title = this.props.navigation.state.title;
+  // console.log(title);
 
   render() {
     const { navigate } = this.props.navigation;
+    var info = JSON.parse(this.props.navigation.state.params);
+    console.log(info);
     return (
       <View>
         <Text style={styles.headerStyle}>
           Result Page
         </Text>
-      
+
+        <Text>
+          {info.title}
+        </Text>
+
+        <Text>
+        {info.extract}
+        </Text>
+        <Text>
+        {info.url}
+        </Text>
+
       </View>
     );
   }
