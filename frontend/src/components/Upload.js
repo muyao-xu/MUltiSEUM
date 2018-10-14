@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -10,9 +9,13 @@ import {
 } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
+//import Language from './src/Language';
 
 export default class Upload extends React.Component {
 
+  static navigationOptions = {
+    //title: 'Welcome',
+  };
   state = {
     avatarSource: null,
     videoSource: null
@@ -82,6 +85,7 @@ export default class Upload extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
@@ -101,6 +105,15 @@ export default class Upload extends React.Component {
         { this.state.videoSource &&
           <Text style={{margin: 8, textAlign: 'center'}}>{this.state.videoSource}</Text>
         }
+
+        <TouchableOpacity style={styles.buttonStyle} onPress={() =>
+          navigate('Language')}
+        >
+          <View style={styles.textStyle}>
+          <Text>Next</Text>
+          </View>
+        </TouchableOpacity>
+
       </View>
     );
   }
@@ -108,6 +121,25 @@ export default class Upload extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  buttonStyle: {
+    height: 50,
+    width: 130,
+    alignSelf: 'center',
+    //backroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#007aff',
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 50
+  },
+  textStyle: {
+    alignSelf: 'center',
+    color: '#007aff',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 15,
+    paddingBottom: 10
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -117,8 +149,9 @@ const styles = StyleSheet.create({
   avatarContainer: {
     borderColor: '#9B9B9B',
     borderWidth: 1 / PixelRatio.get(),
-    justifyContent: 'center',
-    alignItems: 'center'
+    //justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 100
   },
   avatar: {
     borderRadius: 75,

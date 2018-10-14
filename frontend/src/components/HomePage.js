@@ -6,8 +6,9 @@ import { TouchableOpacity, View, Text } from 'react-native';
 
 
 class HomePage extends React.Component {
+
   static navigationOptions = {
-    title: 'Welcome',
+    //title: 'Welcome',
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -16,10 +17,8 @@ class HomePage extends React.Component {
         <Text style={styles.headerStyle}>
           MUiltiSEUM
         </Text>
-        <TouchableOpacity
-style={styles.buttonStyle} onPress={() =>
-          navigate('Upload')}
-        >
+        <TouchableOpacity style={styles.buttonStyle} onPress={() =>
+          navigate('Upload')}>
           <Text style={styles.textStyle}>
             Get Started!
           </Text>
