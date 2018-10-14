@@ -64,25 +64,3 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('frontend', () => App);
-// import React from 'react';
-// import {
-//   AppRegistry,
-//   View
-// } from 'react-native';
-// import {
-//   createStackNavigator,
-// } from 'react-navigator'
-// import HomePage from './src/components/HomePage';
-//
-// const RootStack = createStackNavigator({
-//   Home: { screen: HomePage },
-//   Upload: { screen: Upload },
-// });
-//
-// const App = () => (
-// 	<View style={{ flex: 1 }}>
-// 		<HomePage />
-// 	</View>
-// );
-//
-// AppRegistry.registerComponent('frontend', () => App);
