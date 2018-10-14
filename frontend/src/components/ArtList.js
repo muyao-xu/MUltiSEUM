@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, ImageBackground} from 'react-native';
 //import axios from 'axios';
 import ArtDetail from './ArtDetail';
 
@@ -11,6 +11,10 @@ class ArtList extends React.Component {
   constructor() {
     super();
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.state = {
+      bgImage:require('./../images/wallpaper.jpg'),
+    }
+
   }
 
   componentWillMount() {
@@ -44,11 +48,23 @@ class ArtList extends React.Component {
 
   render() {
     return (
+      <ImageBackground source={this.state.bgImage}
+        style={styles.bg}
+      >
       <ScrollView>
+
         {this.renderArts()}
       </ScrollView>
+      </ImageBackground>
     );
   }
 }
+const styles = {
+  bg: {
+   flex: 1,
+   width: '100%',
+   height: '100%'
+  },
+};
 
 export default ArtList;

@@ -15,7 +15,7 @@ const ArtDetail = ({ art }) => {
       <CardSection>
         <View style={headerContentStyle}>
           <Text style={headerTextSytle}>{title}</Text>
-          <Text>{extract}</Text>
+          <Text style = {{color: 'white'}}>{extract}</Text>
         </View>
       </CardSection>
       <CardSection>
@@ -31,14 +31,12 @@ const ArtDetail = ({ art }) => {
 const styles = {
   headerContentStyle: {
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    color: 'white',
   },
   headerTextSytle: {
-    fontSize: 18
-  },
-  thumbnailStyle: {
-    height: 30,
-    width: 30
+    fontSize: 18,
+    color: 'white',
   },
   thumbnailContainerStyle: {
     justifyContent: 'center',

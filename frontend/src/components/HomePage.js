@@ -20,7 +20,7 @@ class HomePage extends React.Component {
       <ImageBackground source={this.state.bgImage}
         style={styles.bg}
       >
-      <StatusBar transparent />
+      <StatusBar style={{backgroundColor: '#00000000'}} />
      <View style={ styles.container } >
         <Text style={styles.headerStyle}>
           MUltiSEUM
@@ -70,7 +70,8 @@ const styles = {
     borderColor: '#007aff',
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 300
+    marginTop: 300,
+    underlyingColor: 'white'
   }
 };
 

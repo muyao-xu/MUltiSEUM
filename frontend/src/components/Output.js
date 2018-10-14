@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Linking } from 'react-native';
+import { View, Text, StyleSheet, Linking, ImageBackground } from 'react-native';
 import Button from './Button';
 
 export default class Output extends React.Component {
   constructor(props) {
     console.log('props: ', props);
       super(props);
+      this.state = {
+        bgImage:require('./../images/wallpaper.jpg'),
+      }
   }
   static navigationOptions = {
   };
@@ -15,19 +18,30 @@ export default class Output extends React.Component {
     var info = JSON.parse(this.props.navigation.state.params);
     console.log(info);
     return (
+      <ImageBackground source={this.state.bgImage}
+        style={styles.bg}
+      >
       <View style={styles.container}>
         <Text style={styles.titleStyle}>{info.title}</Text>
+        <View style={{ paddingVertical: 5 }} />
         <Text style={styles.extractStyle}>{info.extract}</Text>
-        <Button style={styles.buttonStyle} onPress={() => Linking.openURL(url)}>
-          <Text>{info.url}</Text>
+        <View style={{ paddingVertical: 5 }} />
+        <Button style={styles.buttonStyle} onPress={() => Linking.openURL(info.url)}>
+          <Text>Learn more!</Text>
         </Button>
       </View>
+      </ImageBackground>
 
     );
   }
 }
 
 const styles = StyleSheet.create({
+  bg: {
+   flex: 1,
+   width: '100%',
+   height: '100%'
+  },
   container: {
     paddingTop: 50,
     //backgroundColor: '#fff',
@@ -37,6 +51,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 30,
     marginTop: 50,
+    color: 'white',
   },
   buttonStyle: {
     //flex: 1,
