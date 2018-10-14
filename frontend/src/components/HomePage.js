@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, ImageBackground } from 'react-native';
+import { TouchableOpacity, View, Text, ImageBackground, StatusBar } from 'react-native';
 
 
 
@@ -20,6 +20,7 @@ class HomePage extends React.Component {
       <ImageBackground source={this.state.bgImage}
         style={styles.bg}
       >
+      <StatusBar transparent />
      <View style={ styles.container } >
         <Text style={styles.headerStyle}>
           MUltiSEUM
@@ -52,11 +53,11 @@ const styles = {
   },
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    color: 'white',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 15,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   buttonStyle: {
     //flex: 1,

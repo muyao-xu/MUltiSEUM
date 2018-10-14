@@ -6,6 +6,7 @@ import {
   PixelRatio,
   TouchableOpacity,
   Image,
+  ImageBackground
 } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
@@ -19,11 +20,13 @@ export default class Upload extends React.Component {
     super();
     this.state = {
       bgImage:require('./../images/wallpaper.jpg'),
+      avatarSource:require('./../images/imgsearch.png'),
+      videoSource:require('./../images/textsearch.png'),
     }
   }
   state = {
-    avatarSource: null,
-    videoSource: null
+    //avatarSource: 
+    //videoSource: './../images/textsearch.png',
   };
 
   selectPhotoTapped() {
@@ -192,7 +195,7 @@ export default class Upload extends React.Component {
         <TouchableOpacity style={styles.headerStyle} onPress={() =>
           navigate('ArtList')}>
           <View>
-            <Text>MyList</Text>
+            <Text style={{  color: 'white' }}>MyList</Text>
           </View>
         </TouchableOpacity>
       <View style={styles.container}>
@@ -216,7 +219,7 @@ export default class Upload extends React.Component {
           navigate('Output', this.state.information)}
         >
           <View style={styles.textStyle}>
-          <Text>Next</Text>
+          <Text style={{ color: 'white', fontSize: 16}}>Next</Text>
           </View>
         </TouchableOpacity>
 
@@ -256,7 +259,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'transparent',
     marginTop: 15
   },
   avatarContainer: {
@@ -264,12 +267,14 @@ const styles = StyleSheet.create({
     borderWidth: 1 / PixelRatio.get(),
     //justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 60
+    marginTop: 60,
+    backgroundColor: 'white',
   },
   avatar: {
     borderRadius: 75,
     width: 150,
-    height: 150
+    height: 150,
+    backgroundColor: 'white',
   },
   headerStyle: {
 		//backgroundColor: '#F8F8F8',
