@@ -65,13 +65,14 @@ app.get('/Info/:query/:language', (req, res) => {
           .then((info) => {
             // console.log(extract);
 						var language = user.getLanguage();
-						user.addItem({
+						var urlInfo = {
 							title: info.title,
 							extract: info.extract,
 							url: `https://${language}.wikipedia.org/wiki/${encodedTitle}`
-						});
+						};
+						user.addItem(urlInfo);
 						console.log(user);
-            res.send(info);
+            res.send(urlInfo);
           })
           .catch((err) => {
             console.log(err);
@@ -84,13 +85,14 @@ app.get('/Info/:query/:language', (req, res) => {
 						.then((info) => {
 							// console.log(extract);
 							var language = user.getLanguage();
-							user.addItem({
+							var urlInfo = {
 								title: info.title,
 								extract: info.extract,
 								url: `https://${language}.wikipedia.org/wiki/${info.title}`
-							});
-							// console.log(user);
-							res.send(info);
+							};
+							user.addItem(urlInfo);
+							console.log(user);
+	            res.send(urlInfo);
 						})
               .catch((err) => {
                 console.log(err);

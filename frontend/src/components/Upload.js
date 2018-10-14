@@ -75,8 +75,11 @@ export default class Upload extends React.Component {
           // get extract
           fetch(`http://localhost:3000/Info/${query}/${language}`)
             .then((response) => {
-              var description = response._bodyText;
-              console.log(description);
+              var info = response._bodyText;
+              console.log(info);
+              this.setState({
+                information: info
+              });
             })
             .catch((error) => {
               console.error(error);
@@ -145,8 +148,11 @@ export default class Upload extends React.Component {
           // get extract
           fetch(`http://localhost:3000/Info/${query}/${language}`)
             .then((response) => {
-              var description = response._bodyText;
-              console.log(description);
+              var info = response._bodyText;
+              this.setState({
+                information: info
+              });
+              console.log(info);
             })
             .catch((error) => {
               console.error(error);
@@ -185,7 +191,7 @@ export default class Upload extends React.Component {
         }
 
         <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-          navigate('Language')}
+          navigate('Result', this.state.information)}
         >
           <View style={styles.textStyle}>
           <Text>Next</Text>
