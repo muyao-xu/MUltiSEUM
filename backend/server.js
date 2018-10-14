@@ -25,6 +25,7 @@ app.get('/language/:language', (req, res) => {
 	var language = req.params.language;
 
 	user.setLanguage(language);
+	res.send('success');
 	// console.log(user);
 });
 
@@ -54,6 +55,9 @@ app.post('/OCRText', (req, res) => {
 				.then((result) => {
         	res.send(result.text);
       	})
+				.catch((err) => {
+					res.status(404).send(err);
+				})
     });
 });
 

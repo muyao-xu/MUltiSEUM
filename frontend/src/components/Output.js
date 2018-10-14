@@ -18,7 +18,7 @@ export default class Output extends React.Component {
       <View style={styles.container}>
         <Text style={styles.titleStyle}>{info.title}</Text>
         <Text style={styles.extractStyle}>{info.extract}</Text>
-        <Button style={styles.buttonStyle} onPress={() => Linking.openURL(url)}>
+        <Button style={styles.buttonStyle} onPress={() => Linking.openURL(info.url)}>
           <Text>{info.url}</Text>
         </Button>
       </View>

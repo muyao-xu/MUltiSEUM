@@ -79,8 +79,16 @@ export default class Language extends React.Component {
                         this.inputRefs.picker = el;
                     }}
                 />
-                <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-                  navigate('Upload')}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => {
+                  console.log(this.state.favLanguage);
+                  fetch(`http://localhost:3000/language/${this.state.favLanguage}`)
+                    .then((response) => {
+                      navigate('Upload');
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+                }}>
                   <View style={styles.textStyle}>
                   <Text>Upload photo</Text>
                   </View>
