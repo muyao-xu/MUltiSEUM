@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text, TextInput, StyleSheet, View } from 'react-native';
+import { Alert, Text, TextInput, StyleSheet, View, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
 export default class Language extends React.Component {
@@ -32,8 +32,8 @@ export default class Language extends React.Component {
                     value: 'zh',
                 },
                 {
-                    label: 'Chinese',
-                    value: 'zh',
+                    label: 'English',
+                    value: 'en',
                 },
                 {
                     label: 'Portuguese',
@@ -44,6 +44,7 @@ export default class Language extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
 
@@ -53,7 +54,7 @@ export default class Language extends React.Component {
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a Language...',
-                        value: null,
+                        value: 'zh',
                     }}
                     items={this.state.items}
                     onValueChange={(value) => {
@@ -73,6 +74,13 @@ export default class Language extends React.Component {
                         this.inputRefs.picker = el;
                     }}
                 />
+
+                <TouchableOpacity style={styles.buttonStyle} onPress={() =>
+                  navigate('Upload')}>
+                  <Text style={styles.textStyle}>
+                    Upload
+                  </Text>
+                </TouchableOpacity>
 
             </View>
         );

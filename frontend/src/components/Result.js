@@ -2,22 +2,37 @@ import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 
 export default class HomePage extends React.Component {
+  constructor(props) {
+    console.log('props: ', props);
+      super(props);
+  }
   static navigationOptions = {
     //title: 'Welcome',
   };
+  // var title = this.props.navigation.state.title;
+  // console.log(title);
+
   render() {
     const { navigate } = this.props.navigation;
+    var info = JSON.parse(this.props.navigation.state.params);
+    console.log(info);
     return (
       <View>
         <Text style={styles.headerStyle}>
-          MUiltiSEUM
+          Result Page
         </Text>
-        <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-          navigate('Language')}>
-          <Text style={styles.textStyle}>
-            Get Started!
-          </Text>
-        </TouchableOpacity>
+
+        <Text>
+          {info.title}
+        </Text>
+
+        <Text>
+        {info.extract}
+        </Text>
+        <Text>
+        {info.url}
+        </Text>
+
       </View>
     );
   }
