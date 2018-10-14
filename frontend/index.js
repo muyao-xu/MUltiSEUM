@@ -13,6 +13,7 @@ import {
 import HomePage from './src/components/HomePage';
 import Upload from './src/components/Upload';
 import Language from './src/components/Language';
+import Output from './src/components/Output';
 //import CreateRoomScreen from './src/components/CreateRoomScreen';
 //import EnterRoomScreen from './src/components/EnterRoomScreen';
 
@@ -20,7 +21,8 @@ const AppStack = StackNavigator(
   {
     HomePage: { screen: HomePage },
     Upload: { screen: Upload },
-    Language: { screen: Language }
+    Language: { screen: Language },
+    Output: {screen: Output }
     //EnterRoomScreen: { screen: EnterRoomScreen },
     //EditingScreen: { screen: EditingScreen },
   },

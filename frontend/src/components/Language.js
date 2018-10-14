@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text, TextInput, StyleSheet, View } from 'react-native';
+import { Alert, Text, TextInput, StyleSheet, View, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
 export default class Language extends React.Component {
@@ -44,7 +44,9 @@ export default class Language extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
+
             <View style={styles.container}>
 
                 <View style={{ paddingVertical: 5 }} />
@@ -73,6 +75,13 @@ export default class Language extends React.Component {
                         this.inputRefs.picker = el;
                     }}
                 />
+                <TouchableOpacity style={styles.buttonStyle} onPress={() =>
+                  navigate('Output')}
+                >
+                  <View style={styles.textStyle}>
+                  <Text>Next</Text>
+                  </View>
+                </TouchableOpacity>
 
             </View>
         );
@@ -81,14 +90,32 @@ export default class Language extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 100,
-        backgroundColor: '#fff',
+        paddingTop: 200,
+        //backgroundColor: '#fff',
         justifyContent: 'center',
         paddingHorizontal: 10,
+        fontSize: 50
     },
     textStyle: {
-        fontSize: 50
-    }
+      alignSelf: 'center',
+      color: '#007aff',
+      fontSize: 30,
+      fontWeight: '600',
+      paddingTop: 15,
+      paddingBottom: 10
+    },
+    buttonStyle: {
+      height: 50,
+      width: 130,
+      alignSelf: 'center',
+      //backroundColor: '#fff',
+      borderWidth: 1,
+      borderColor: '#007aff',
+      marginLeft: 5,
+      marginRight: 5,
+      marginTop: 50
+    },
+
 });
 
 
