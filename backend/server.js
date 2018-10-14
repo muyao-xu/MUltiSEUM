@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/imgUpload.html');
 });
 
-app.get('/user/:language', (req, res) => {
+app.get('/language/:language', (req, res) => {
 	var language = req.params.language;
 
 	user.setLanguage(language);
