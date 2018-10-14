@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking } from 'react-native';
 import Button from './Button';
 
 export default class Output extends React.Component {
@@ -18,10 +18,11 @@ export default class Output extends React.Component {
       <View style={styles.container}>
         <Text style={styles.titleStyle}>{info.title}</Text>
         <Text style={styles.extractStyle}>{info.extract}</Text>
-        <Button style={styles.buttonStyle}>
+        <Button style={styles.buttonStyle} onPress={() => Linking.openURL(url)}>
           <Text>{info.url}</Text>
         </Button>
       </View>
+
     );
   }
 }

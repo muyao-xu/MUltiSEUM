@@ -28,6 +28,10 @@ app.get('/language/:language', (req, res) => {
 	// console.log(user);
 });
 
+app.get('/getLanguage', (req, res) => {
+	res.send(user.getLanguage());
+});
+
 app.post('/ImgInfo', (req, res) => {
 	var form = new formidable.IncomingForm();
 	form.parse(req, (err, fields, files) => {
@@ -58,6 +62,7 @@ app.get('/Info/:query/:language', (req, res) => {
   var language = req.params.language;
   getQueryName(query)
     .then((encodedTitle) => {
+			console.log(encodedTitle);
       if (language === 'en') {
         getExtract(encodedTitle, 'en')
           .then((info) => {

@@ -75,21 +75,26 @@ export default class Upload extends React.Component {
         })
         .then((response) => {
           var query = response._bodyText;
-          // change this
-          const language = 'en';
           console.log('query: ', query);
-          // get extract
-          fetch(`http://localhost:3000/Info/${query}/${language}`)
-            .then((response) => {
-              var info = response._bodyText;
-              console.log(info);
-              this.setState({
-                information: info
+          // change this
+          fetch('http://localhost:3000/getLanguage')
+          .then((response) => {
+            console.log('here');
+            console.log('response', response);
+            var language = response._bodyText;
+            // get extract
+            fetch(`http://localhost:3000/Info/${query}/${language}`)
+              .then((response) => {
+                var info = response._bodyText;
+                console.log(info);
+                this.setState({
+                  information: info
+                });
+              })
+              .catch((error) => {
+                console.error(error);
               });
-            })
-            .catch((error) => {
-              console.error(error);
-            });
+          })
           // Alert.alert(response._bodyText);
         })
         .catch((error) => {
@@ -99,80 +104,83 @@ export default class Upload extends React.Component {
     });
     }
 
-  selectOCRTapped() {
-    const options = {
-      quality: 1.0,
-      maxWidth: 500,
-      maxHeight: 500,
-      storageOptions: {
-        skipBackup: true
-      }
-    };
+    selectOCRTapped() {
+      const options = {
+        quality: 1.0,
+        maxWidth: 500,
+        maxHeight: 500,
+        storageOptions: {
+          skipBackup: true
+        }
+      };
 
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
+      ImagePicker.showImagePicker(options, (response) => {
+        console.log('Response = ', response);
 
-      if (response.didCancel) {
-        console.log('User cancelled photo picker');
-      }
-      else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      }
-      else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-      }
-      else {
-        let source = { uri: response.uri };
+        if (response.didCancel) {
+          console.log('User cancelled photo picker');
+        }
+        else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        }
+        else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        }
+        else {
+          let source = { uri: response.uri };
 
-        // You can also display the image using data:
-        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+          // You can also display the image using data:
+          // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
-        this.setState({
-          videoSource: source
-        });
-        // get the name
-        var data = new FormData();
-        data.append('filetoupload', {
-          // change only the next two linesbv
-          uri: source.uri,
-          name: 'test.JPG',
-          type: 'image/jpg'
-        });
+          this.setState({
+            videoSource: source
+          });
+          // get the name
+          var data = new FormData();
+          data.append('filetoupload', {
+            // change only the next two linesbv
+            uri: source.uri,
+            name: 'test.JPG',
+            type: 'image/jpg'
+          });
 
-        fetch('http://localhost:3000/OCRText', {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-          method: 'POST',
-          body: data
-        })
-        .then((response) => {
-          var query = response._bodyText;
-          // change this
-          const language = 'en';
-          console.log('query: ', query);
-          // get extract
-          fetch(`http://localhost:3000/Info/${query}/${language}`)
+          fetch('http://localhost:3000/OCRText', {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            method: 'POST',
+            body: data
+          })
+          .then((response) => {
+            var query = response._bodyText;
+            console.log('query: ', query);
+            // change this
+            fetch('http://localhost:3000/getLanguage')
             .then((response) => {
-              var info = response._bodyText;
-              this.setState({
-                information: info
-              });
-              console.log(info);
+              console.log('here');
+              console.log('response', response);
+              var language = response._bodyText;
+              // get extract
+              fetch(`http://localhost:3000/Info/${query}/${language}`)
+                .then((response) => {
+                  var info = response._bodyText;
+                  console.log(info);
+                  this.setState({
+                    information: info
+                  });
+                })
+                .catch((error) => {
+                  console.error(error);
+                });
             })
-            .catch((error) => {
-              console.error(error);
-            });
-          // Alert.alert(response._bodyText);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-
-
+            // Alert.alert(response._bodyText);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+        }
+      });
       }
-    });
-  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -197,17 +205,15 @@ export default class Upload extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={this.selectOCRTapped.bind(this)}>
-          <View style={[styles.avatar, styles.avatarContainer]}>
-            <Text>Scan Text via OCR</Text>
+          <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
+          { this.state.videoSource === null ? <Text>Select a Photo</Text> :
+            <Image style={styles.avatar} source={this.state.videoSource} />
+          }
           </View>
         </TouchableOpacity>
 
-        { this.state.videoSource &&
-          <Text style={{margin: 8, textAlign: 'center'}}>{this.state.videoSource}</Text>
-        }
-
         <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-          navigate('Result', this.state.information)}
+          navigate('Output', this.state.information)}
         >
           <View style={styles.textStyle}>
           <Text>Next</Text>
