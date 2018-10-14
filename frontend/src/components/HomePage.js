@@ -25,13 +25,13 @@ class HomePage extends React.Component {
         <Text style={styles.headerStyle}>
           MUltiSEUM
         </Text>
-        <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-          navigate('Language')}
-        >
-          <Text style={styles.textStyle}>
-            Get Started!
-          </Text>
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          onPress={() => navigate('Language')}
+          >
+          <Text style={styles.textStyle}>Get Started!</Text>
         </TouchableOpacity>
+
       </View>
       </ImageBackground>
     );
@@ -53,24 +53,31 @@ const styles = {
   },
   textStyle: {
     alignSelf: 'center',
-    color: 'white',
-    fontSize: 16,
+    color: 'black',
+    fontSize: 18,
     fontWeight: '600',
-    paddingTop: 15,
-    paddingBottom: 10,
   },
   buttonStyle: {
     //flex: 1,
     height: 50,
-    width: 130,
+    width: 200,
     //justifyContent: 'center',
     alignSelf: 'center',
-    backroundColor: 'white',
-    borderWidth: 1,
-    borderColor: '#007aff',
+    // backroundColor: 'white',
+    // borderWidth: 1,
+    // borderColor: '#007aff',
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 300
+    marginTop: 300,
+    marginRight:40,
+    marginLeft:40,
+
+    paddingTop:10,
+    paddingBottom:10,
+    backgroundColor:'white',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
   }
 };
 

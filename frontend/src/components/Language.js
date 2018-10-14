@@ -120,23 +120,31 @@ const styles = StyleSheet.create({
     },
     textStyle: {
       alignSelf: 'center',
-      color: '#007aff',
-      fontSize: 50,
+      color: 'black',
+      fontSize: 18,
       fontWeight: '600',
-      paddingTop: 15,
-      paddingBottom: 10,
-      color: 'white'
     },
     buttonStyle: {
+      //flex: 1,
       height: 50,
-      width: 130,
+      width: 200,
+      //justifyContent: 'center',
       alignSelf: 'center',
-      //backroundColor: '#fff',
-      borderWidth: 1,
-      borderColor: '#007aff',
+      // backroundColor: 'white',
+      // borderWidth: 1,
+      // borderColor: '#007aff',
       marginLeft: 5,
       marginRight: 5,
-      marginTop: 50
+      marginTop: 300,
+      marginRight:40,
+      marginLeft:40,
+
+      paddingTop:10,
+      paddingBottom:10,
+      backgroundColor:'white',
+      borderRadius:10,
+      borderWidth: 1,
+      borderColor: '#fff'
     },
     headerStyle: {
   		//backgroundColor: '#F8F8F8',
