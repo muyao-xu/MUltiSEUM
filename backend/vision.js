@@ -33,7 +33,10 @@ function logoDetect (fileName) {
         .logoDetection(fileName)
         .then(results => {
           const logos = results[0].logoAnnotations;
-          resolve(logos[0].description);
+          if(logos[0] === undefined)
+            reject('Cannot find work of art in this image');
+          else
+            resolve(logos[0].description);
         })
         .catch(err => {
           console.error('ERROR:', err);
