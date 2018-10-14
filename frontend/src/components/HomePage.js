@@ -20,7 +20,7 @@ class HomePage extends React.Component {
       <ImageBackground source={this.state.bgImage}
         style={styles.bg}
       >
-      <StatusBar transparent />
+      <StatusBar style={{backgroundColor: '#00000000'}} />
      <View style={ styles.container } >
         <Text style={styles.headerStyle}>
           MUltiSEUM
