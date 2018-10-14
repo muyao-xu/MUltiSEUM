@@ -196,14 +196,12 @@ export default class Upload extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={this.selectOCRTapped.bind(this)}>
-          <View style={[styles.avatar, styles.avatarContainer]}>
-            <Text>Scan Text via OCR</Text>
+          <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
+          { this.state.videoSource === null ? <Text>Select a Photo</Text> :
+            <Image style={styles.avatar} source={this.state.videoSource} />
+          }
           </View>
         </TouchableOpacity>
-
-        { this.state.videoSource &&
-          <Text style={{margin: 8, textAlign: 'center'}}>{this.state.videoSource}</Text>
-        }
 
         <TouchableOpacity style={styles.buttonStyle} onPress={() =>
           navigate('Output', this.state.information)}

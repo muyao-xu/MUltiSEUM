@@ -62,6 +62,7 @@ app.get('/Info/:query/:language', (req, res) => {
   var language = req.params.language;
   getQueryName(query)
     .then((encodedTitle) => {
+			console.log(encodedTitle);
       if (language === 'en') {
         getExtract(encodedTitle, 'en')
           .then((info) => {
