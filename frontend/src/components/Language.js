@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text, TextInput, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Alert, Text, TextInput, StyleSheet, View, TouchableOpacity, ImageBackground } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
 export default class Language extends React.Component {
@@ -9,6 +9,7 @@ export default class Language extends React.Component {
         this.inputRefs = {};
 
         this.state = {
+            bgImage:require('./../images/wallpaper.jpg'),
             favLanguage: undefined,
             items: [
                 {
@@ -46,15 +47,18 @@ export default class Language extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
+          <ImageBackground source={this.state.bgImage}
+            style={styles.bg}
+          >
           <View>
             <TouchableOpacity style ={styles.myListButtonStyle} onPress={() =>
               navigate('ArtList')}>
               <View>
-                <Text>MyList</Text>
+                <Text style={{  color: 'white' }}>MyList</Text>
               </View>
             </TouchableOpacity>
           <View style={styles.container}>
-                <Text style={{ fontSize: 24 }} >What&rsquo;s the language you speak?</Text>
+                <Text style={{ fontSize: 24, color: 'white' }} >What&rsquo;s the language you speak?</Text>
                 <View style={{ paddingVertical: 5 }} />
                 <RNPickerSelect
                     placeholder={{
@@ -90,23 +94,29 @@ export default class Language extends React.Component {
                     });
                 }}>
                   <View style={styles.textStyle}>
-                  <Text>Upload photo</Text>
+                  <Text style={{ color: 'white'} }>Upload photo</Text>
                   </View>
                 </TouchableOpacity>
 
             </View>
           </View>
+          </ImageBackground>
         );
     }
 }
 
 const styles = StyleSheet.create({
+  bg: {
+   flex: 1,
+   width: '100%',
+   height: '100%'
+  },
     container: {
         paddingTop: 150,
         //backgroundColor: '#fff',
         justifyContent: 'center',
         paddingHorizontal: 10,
-        fontSize: 50
+        fontSize: 50,
     },
     textStyle: {
       alignSelf: 'center',
@@ -114,7 +124,8 @@ const styles = StyleSheet.create({
       fontSize: 50,
       fontWeight: '600',
       paddingTop: 15,
-      paddingBottom: 10
+      paddingBottom: 10,
+      color: 'white'
     },
     buttonStyle: {
       height: 50,
@@ -145,8 +156,8 @@ const styles = StyleSheet.create({
       width: 45,
       alignSelf: 'flex-end',
       //backroundColor: '#fff',
-      borderWidth: 0.5,
-      borderColor: '#007aff',
+      //borderWidth: 0.5,
+      //borderColor: '#fff',
       marginLeft: 10,
       marginRight: 10,
       marginTop: 15
