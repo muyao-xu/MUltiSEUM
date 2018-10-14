@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import { View, ScrollView } from 'react-native';
 //import axios from 'axios';
 import ArtDetail from './ArtDetail';
@@ -6,9 +8,17 @@ import ArtDetail from './ArtDetail';
 class ArtList extends React.Component {
   state = { arts: [] };
 
+  constructor() {
+    super();
+    this.componentWillMount = this.componentWillMount.bind(this);
+  }
+
   componentWillMount() {
-    fetch('http://localhost:3000/List')
-    .then(response => this.setState({ arts: response._bodyText}))
+    axios.get('http://localhost:3000/List')
+    .then(response => {
+      this.setState({ arts: response.data});
+      // console.log(response)
+    })
     .catch((error) => {
       console.error(error);
     });
@@ -19,9 +29,17 @@ class ArtList extends React.Component {
 
 
   renderArts() {
-    return this.state.arts.map(art =>
+    var info = this.state.arts;
+    return info.map(art =>
       <ArtDetail key={art.title} art={art} />
     );
+
+    // return info.map(art =>
+      // <ArtDetail key={art.title} art={art} />
+    // {
+    //   <Text></Text>
+    // }
+
   }
 
   render() {

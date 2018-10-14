@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text } from 'react-native';
 
 export default class HomePage extends React.Component {
   constructor(props) {
-    console.log('props: ', props);
+    // console.log('props: ', props);
       super(props);
   }
   static navigationOptions = {
@@ -15,7 +15,7 @@ export default class HomePage extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     var info = JSON.parse(this.props.navigation.state.params);
-    console.log(info);
+    // console.log(info);
     return (
       <View>
         <Text style={styles.headerStyle}>

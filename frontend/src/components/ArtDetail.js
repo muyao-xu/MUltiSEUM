@@ -5,7 +5,7 @@ import CardSection from './CardSection';
 import Button from './Button';
 
 const ArtDetail = ({ art }) => {
-  const { title, extracts, url } = art;
+  const { title, extract, url } = art;
   const {
           headerContentStyle,
           headerTextSytle,
@@ -15,7 +15,7 @@ const ArtDetail = ({ art }) => {
       <CardSection>
         <View style={headerContentStyle}>
           <Text style={headerTextSytle}>{title}</Text>
-          <Text>{extracts}</Text>
+          <Text>{extract}</Text>
         </View>
       </CardSection>
       <CardSection>
