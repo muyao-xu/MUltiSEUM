@@ -1,7 +1,11 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
+// import {
+//   createStackNavigator,
+// } from 'react-navigation';
 
-export default class HomePage extends React.Component {
+
+class HomePage extends React.Component {
   static navigationOptions = {
     //title: 'Welcome',
   };
@@ -13,7 +17,12 @@ export default class HomePage extends React.Component {
           MUiltiSEUM
         </Text>
         <TouchableOpacity style={styles.buttonStyle} onPress={() =>
+<<<<<<< HEAD
           navigate('Language')}>
+=======
+          navigate('Upload')}
+        >
+>>>>>>> layout
           <Text style={styles.textStyle}>
             Get Started!
           </Text>
@@ -52,3 +61,5 @@ const styles = {
     marginTop: 300
   }
 };
+
+export default HomePage;

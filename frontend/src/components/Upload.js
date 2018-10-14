@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import Header from './Header';
 
 import ImagePicker from 'react-native-image-picker';
 //import Language from './src/Language';
@@ -171,6 +172,13 @@ export default class Upload extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
+      <View>
+        <TouchableOpacity style={styles.headerStyle} onPress={() =>
+          navigate('ArtList')}>
+          <View>
+            <Text>MyList</Text>
+          </View>
+        </TouchableOpacity>
       <View style={styles.container}>
         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
@@ -182,7 +190,7 @@ export default class Upload extends React.Component {
 
         <TouchableOpacity onPress={this.selectOCRTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer]}>
-            <Text>Select a Video</Text>
+            <Text>Scan Text via OCR</Text>
           </View>
         </TouchableOpacity>
 
@@ -204,6 +212,7 @@ export default class Upload extends React.Component {
           </View>
         </TouchableOpacity>
 
+      </View>
       </View>
     );
   }
@@ -230,21 +239,36 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   container: {
-    flex: 1,
+    //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
+    marginTop: 15
   },
   avatarContainer: {
     borderColor: '#9B9B9B',
     borderWidth: 1 / PixelRatio.get(),
     //justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100
+    marginTop: 60
   },
   avatar: {
     borderRadius: 75,
     width: 150,
     height: 150
-  }
+  },
+  headerStyle: {
+		//backgroundColor: '#F8F8F8',
+		justifyContent: 'center',
+		alignItems: 'flex-end',
+		height: 50,
+		//paddingTop: 15,
+    paddingRight: 10,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: 0.2,
+		elevation: 2,
+		position: 'relative'
+	},
+
 });
