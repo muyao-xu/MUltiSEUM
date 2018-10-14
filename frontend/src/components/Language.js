@@ -47,17 +47,15 @@ export default class Language extends React.Component {
         const { navigate } = this.props.navigation;
         return (
           <View>
-            <TouchableOpacity style={styles.headerStyle} onPress={() =>
+            <TouchableOpacity style ={styles.myListButtonStyle} onPress={() =>
               navigate('ArtList')}>
               <View>
                 <Text>MyList</Text>
               </View>
             </TouchableOpacity>
           <View style={styles.container}>
-
+                <Text style={{ fontSize: 24 }} >What&rsquo;s the language you speak?</Text>
                 <View style={{ paddingVertical: 5 }} />
-
-                <Text styles={styles.textStyle}>What&rsquo;s the language you speak?</Text>
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a Language...',
@@ -82,18 +80,10 @@ export default class Language extends React.Component {
                     }}
                 />
                 <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-                  navigate('Output')}
-                >
-                  <View style={styles.textStyle}>
-                  <Text>Next</Text>
-                  </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.buttonStyle} onPress={() =>
                   navigate('Upload')}>
-                  <Text style={styles.textStyle}>
-                    Upload
-                  </Text>
+                  <View style={styles.textStyle}>
+                  <Text>Upload photo</Text>
+                  </View>
                 </TouchableOpacity>
 
             </View>
@@ -104,7 +94,7 @@ export default class Language extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 200,
+        paddingTop: 150,
         //backgroundColor: '#fff',
         justifyContent: 'center',
         paddingHorizontal: 10,
@@ -113,7 +103,7 @@ const styles = StyleSheet.create({
     textStyle: {
       alignSelf: 'center',
       color: '#007aff',
-      fontSize: 30,
+      fontSize: 50,
       fontWeight: '600',
       paddingTop: 15,
       paddingBottom: 10
@@ -142,6 +132,17 @@ const styles = StyleSheet.create({
   		elevation: 2,
   		position: 'relative'
   	},
+    myListButtonStyle: {
+      height: 20,
+      width: 45,
+      alignSelf: 'flex-end',
+      //backroundColor: '#fff',
+      borderWidth: 0.5,
+      borderColor: '#007aff',
+      marginLeft: 10,
+      marginRight: 10,
+      marginTop: 15
+    }
 
 });
 
@@ -159,41 +160,3 @@ const pickerSelectStyles = StyleSheet.create({
         color: 'black',
     },
 });
-// import React from 'react';
-// import { Text, View } from 'react-native';
-// import DropdownMenu from 'react-native-modal-dropdown';
-//
-// export default class Language extends React.Component {
-//   render() {
-//     //let data = [["C", 'Java', "JavaScript", "PHP"], ["Python", "Ruby"], ["Swift", "Objective-C"]];
-//     const data = [{
-//       value: 'Banana',
-//     }, {
-//       value: 'Mango',
-//     }, {
-//       value: 'Pear',
-//     }];
-//     return (
-//       <View>
-//         <Text style={styles.textStyle}>Please select a language</Text>
-//         <Text style={styles.textStyle}>English</Text>
-//
-//         <View>
-//           <DropdownMenu.Dropdown
-//           label='Favorite Fruit'
-//           data={data}
-//           />
-//         </View>
-//
-//       </View>
-//     );
-//   }
-// }
-//
-// const styles = {
-//   headerStyle: {
-//     fontSize: 50,
-//     marginTop: 150,
-//     alignSelf: 'center'
-//   }
-// };

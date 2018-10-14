@@ -7,10 +7,7 @@ export default class HomePage extends React.Component {
       super(props);
   }
   static navigationOptions = {
-    //title: 'Welcome',
   };
-  // var title = this.props.navigation.state.title;
-  // console.log(title);
 
   render() {
     const { navigate } = this.props.navigation;

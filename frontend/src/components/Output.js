@@ -3,13 +3,24 @@ import { View, Text, StyleSheet } from 'react-native';
 import Button from './Button';
 
 export default class Output extends React.Component {
+  constructor(props) {
+    console.log('props: ', props);
+      super(props);
+  }
+  static navigationOptions = {
+  };
+
   render() {
+    const { navigate } = this.props.navigation;
+    var info = JSON.parse(this.props.navigation.state.params);
+    console.log(info);
     return (
-      
       <View style={styles.container}>
-        <Text style={styles.titleStyle}>Hello!</Text>
-        <Text style={styles.extractStyle}>some information here</Text>
-        <Button style={styles.buttonStyle}>Learn more</Button>
+        <Text style={styles.titleStyle}>{info.title}</Text>
+        <Text style={styles.extractStyle}>{info.extract}</Text>
+        <Button style={styles.buttonStyle}>
+          <Text>{info.url}</Text>
+        </Button>
       </View>
     );
   }
