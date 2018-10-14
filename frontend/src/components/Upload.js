@@ -15,6 +15,12 @@ export default class Upload extends React.Component {
   static navigationOptions = {
     //title: 'Welcome',
   };
+  constructor(){
+    super();
+    this.state = {
+      bgImage:require('./../images/wallpaper.jpg'),
+    }
+  }
   state = {
     avatarSource: null,
     videoSource: null
@@ -171,6 +177,9 @@ export default class Upload extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
+      <ImageBackground source={this.state.bgImage}
+        style={styles.bg}
+      >
       <View>
         <TouchableOpacity style={styles.headerStyle} onPress={() =>
           navigate('ArtList')}>
@@ -207,11 +216,17 @@ export default class Upload extends React.Component {
 
       </View>
       </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  bg: {
+   flex: 1,
+   width: '100%',
+   height: '100%'
+  },
   buttonStyle: {
     height: 50,
     width: 130,

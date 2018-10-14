@@ -1,23 +1,30 @@
 import React from 'react';
-import { TouchableOpacity, View, Text } from 'react-native';
-// import {
-//   createStackNavigator,
-// } from 'react-navigation';
+import { TouchableOpacity, View, Text, ImageBackground } from 'react-native';
+
+
 
 
 class HomePage extends React.Component {
   static navigationOptions = {
     //title: 'Welcome',
   };
+  constructor(){
+    super();
+    this.state = {
+      bgImage:require('./../images/wallpaper.jpg'),
+    }
+  }
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <ImageBackground source={this.state.bgImage}
+        style={styles.bg}
+      >
+     <View style={ styles.container } >
         <Text style={styles.headerStyle}>
-          MUiltiSEUM
+          MUltiSEUM
         </Text>
-        <TouchableOpacity
-style={styles.buttonStyle} onPress={() =>
+        <TouchableOpacity style={styles.buttonStyle} onPress={() =>
           navigate('Language')}
         >
           <Text style={styles.textStyle}>
@@ -25,16 +32,23 @@ style={styles.buttonStyle} onPress={() =>
           </Text>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     );
   }
 }
 
 
 const styles = {
+  bg: {
+   flex: 1,
+   width: '100%',
+   height: '100%'
+  },
   headerStyle: {
     fontSize: 50,
     marginTop: 150,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    color: 'white',
   },
   textStyle: {
     alignSelf: 'center',
@@ -50,7 +64,7 @@ const styles = {
     width: 130,
     //justifyContent: 'center',
     alignSelf: 'center',
-    backroundColor: '#fff',
+    backroundColor: 'white',
     borderWidth: 1,
     borderColor: '#007aff',
     marginLeft: 5,
