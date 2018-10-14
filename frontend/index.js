@@ -11,14 +11,9 @@ import {
 } from 'react-navigation';
 
 import HomePage from './src/components/HomePage';
-//import Header from './src/components/Header';
 import Upload from './src/components/Upload';
 import Language from './src/components/Language';
-
 import Result from './src/components/Result';
-//import CreateRoomScreen from './src/components/CreateRoomScreen';
-//import EnterRoomScreen from './src/components/EnterRoomScreen';
-
 import Output from './src/components/Output';
 import ArtList from './src/components/ArtList';
 
@@ -26,14 +21,9 @@ import ArtList from './src/components/ArtList';
 const AppStack = StackNavigator(
   {
     HomePage: { screen: HomePage },
-    //Header: { screen: Header },
     Upload: { screen: Upload },
     Language: { screen: Language },
-
-    Result: { screen: Result }
-    //EnterRoomScreen: { screen: EnterRoomScreen },
-    //EditingScreen: { screen: EditingScreen },
-
+    Result: { screen: Result },
     Output: { screen: Output },
     ArtList: { screen: ArtList }
 

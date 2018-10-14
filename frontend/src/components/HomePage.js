@@ -16,13 +16,10 @@ class HomePage extends React.Component {
         <Text style={styles.headerStyle}>
           MUiltiSEUM
         </Text>
-        <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-<<<<<<< HEAD
-          navigate('Language')}>
-=======
-          navigate('Upload')}
+        <TouchableOpacity
+style={styles.buttonStyle} onPress={() =>
+          navigate('Language')}
         >
->>>>>>> layout
           <Text style={styles.textStyle}>
             Get Started!
           </Text>
