@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     return (
       <View>
         <Text style={styles.headerStyle}>
-          MUiltiSEUM
+          MUltiSEUM
         </Text>
         <TouchableOpacity
 style={styles.buttonStyle} onPress={() =>

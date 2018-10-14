@@ -28,6 +28,10 @@ app.get('/language/:language', (req, res) => {
 	// console.log(user);
 });
 
+app.get('/getLanguage', (req, res) => {
+	res.send(user.getLanguage());
+});
+
 app.post('/ImgInfo', (req, res) => {
 	var form = new formidable.IncomingForm();
 	form.parse(req, (err, fields, files) => {
