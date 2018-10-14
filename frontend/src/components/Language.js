@@ -46,7 +46,14 @@ export default class Language extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-
+          <View>
+            <TouchableOpacity style={styles.headerStyle} onPress={() =>
+              navigate('ArtList')}>
+              <View>
+                <Text>MyList</Text>
+              </View>
+            </TouchableOpacity>
+          <View style={styles.container}>
             <View style={styles.container}>
 
                 <View style={{ paddingVertical: 5 }} />
@@ -115,6 +122,19 @@ const styles = StyleSheet.create({
       marginRight: 5,
       marginTop: 50
     },
+    headerStyle: {
+  		//backgroundColor: '#F8F8F8',
+  		justifyContent: 'center',
+  		alignItems: 'flex-end',
+  		height: 50,
+  		//paddingTop: 15,
+      paddingRight: 10,
+  		shadowColor: '#000',
+  		shadowOffset: { width: 0, height: 2 },
+  		shadowOpacity: 0.2,
+  		elevation: 2,
+  		position: 'relative'
+  	},
 
 });
 

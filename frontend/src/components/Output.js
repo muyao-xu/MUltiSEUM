@@ -5,6 +5,7 @@ import Button from './Button';
 export default class Output extends React.Component {
   render() {
     return (
+      
       <View style={styles.container}>
         <Text style={styles.titleStyle}>Hello!</Text>
         <Text style={styles.extractStyle}>some information here</Text>

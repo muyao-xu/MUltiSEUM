@@ -9,7 +9,6 @@ const ArtDetail = ({ art }) => {
   const {
           headerContentStyle,
           headerTextSytle,
-
   } = styles;
   return (
     <Card>
@@ -21,7 +20,7 @@ const ArtDetail = ({ art }) => {
       </CardSection>
       <CardSection>
         <Button onPress={() => Linking.openURL(url)}>
-          Buy Now!
+          Check More!
         </Button>
       </CardSection>
     </Card>
