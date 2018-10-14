@@ -26,7 +26,10 @@ app.post('/ImgInfo', (req, res) => {
     logoDetect(path)
       .then((description) => {
         res.send(description);
-      });
+      })
+			.catch((err) => {
+				res.status(404).send(err);
+			});
   });
 });
 
@@ -34,9 +37,10 @@ app.post('/OCRText', (req, res) => {
   var form = new formidable.IncomingForm();
     form.parse(req, (err, fields, files) => {
       var path = storeFile(files.filetoupload);
-      docuDetect(path).then((result) => {
-        res.send(result.text);
-      });
+      docuDetect(path)
+				.then((result) => {
+        	res.send(result.text);
+      	})
     });
 });
 

@@ -8,10 +8,15 @@ function getQueryName(name) {
     axios.get(URL)
       .then((response) => {
         var returnURL = response.data[3][0];
-        var arr = returnURL.split('/');
-        // console.log(URL) ;
-        // console.log(arr[arr.length-1]);
-        resolve(arr[arr.length-1]);
+        if(returnURL === undefined) {
+          reject('There is no such page in wikipedia');
+        }
+        else {
+          var arr = returnURL.split('/');
+          // console.log(URL) ;
+          // console.log(arr[arr.length-1]);
+          resolve(arr[arr.length-1]);
+        }
       })
       .catch((err) => {
         // console.log(err);

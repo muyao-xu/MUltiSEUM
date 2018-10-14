@@ -49,23 +49,62 @@ export default class Upload extends React.Component {
         this.setState({
           avatarSource: source
         });
+        // get the name
+        var data = new FormData();
+        data.append('filetoupload', {
+          // change only the next two linesbv
+          uri: source.uri,
+          name: 'test.JPG',
+          type: 'image/jpg'
+        });
+
+        fetch('http://localhost:3000/ImgInfo', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          method: 'POST',
+          body: data
+        })
+        .then((response) => {
+          var query = response._bodyText;
+          // change this
+          const language = 'en';
+          console.log('query: ', query);
+          // get extract
+          fetch(`http://localhost:3000/Info/${query}/${language}`)
+            .then((response) => {
+              var description = response._bodyText;
+              console.log(description);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          // Alert.alert(response._bodyText);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+
       }
     });
   }
 
-  selectVideoTapped() {
+  selectOCRTapped() {
     const options = {
-      title: 'Video Picker',
-      takePhotoButtonTitle: 'Take Video...',
-      mediaType: 'video',
-      videoQuality: 'medium'
+      quality: 1.0,
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true
+      }
     };
 
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response);
 
       if (response.didCancel) {
-        console.log('User cancelled video picker');
+        console.log('User cancelled photo picker');
       }
       else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
@@ -74,9 +113,51 @@ export default class Upload extends React.Component {
         console.log('User tapped custom button: ', response.customButton);
       }
       else {
+        let source = { uri: response.uri };
+
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
         this.setState({
-          videoSource: response.uri
+          avatarSource: source
         });
+        // get the name
+        var data = new FormData();
+        data.append('filetoupload', {
+          // change only the next two linesbv
+          uri: source.uri,
+          name: 'test.JPG',
+          type: 'image/jpg'
+        });
+
+        fetch('http://localhost:3000/OCRText', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          method: 'POST',
+          body: data
+        })
+        .then((response) => {
+          var query = response._bodyText;
+          // change this
+          const language = 'en';
+          console.log('query: ', query);
+          // get extract
+          fetch(`http://localhost:3000/Info/${query}/${language}`)
+            .then((response) => {
+              var description = response._bodyText;
+              console.log(description);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          // Alert.alert(response._bodyText);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+
       }
     });
   }
@@ -92,7 +173,7 @@ export default class Upload extends React.Component {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.selectVideoTapped.bind(this)}>
+        <TouchableOpacity onPress={this.selectOCRTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer]}>
             <Text>Select a Video</Text>
           </View>
