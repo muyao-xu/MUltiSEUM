@@ -57,7 +57,11 @@ function getExtract(title, language) {
       .then((response) => {
         var pages = response.data.query.pages;
         var extract = Object.values(pages)[0].extract;
-        resolve(extract);
+        var title = Object.values(pages)[0].title;
+        var result = {
+          extract, title
+        }
+        resolve(result);
       }).catch((err)=>{
         reject (err);
       })

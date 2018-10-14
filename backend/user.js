@@ -1,7 +1,10 @@
 class User {
-  constructor(name) {
-    this._name = name;
+  constructor() {
     this._list = [];
+  }
+
+  setName(name) {
+    this._name = name;
   }
 
   setLanguage(language) {
@@ -14,6 +17,10 @@ class User {
 
   getLanguage() {
     return this.language;
+  }
+
+  getList() {
+    return this._list;
   }
 }
 

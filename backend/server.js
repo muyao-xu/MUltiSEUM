@@ -9,6 +9,8 @@ const { getQueryName, getQueryLanguage, getExtract } = require('./wiki.js');
 
 
 var app = express();
+var user = new User();
+user.setLanguage('zh');
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
@@ -23,7 +25,7 @@ app.get('/user/:username/:language', (req, res) => {
 	var name = req.params.username;
 	var language = req.params.language;
 
-	var user = new User(name);
+	user.setName(name);
 	user.setLanguage(language);
 	console.log(user);
 });
@@ -60,9 +62,16 @@ app.get('/Info/:query/:language', (req, res) => {
     .then((encodedTitle) => {
       if (language === 'en') {
         getExtract(encodedTitle, 'en')
-          .then((extract) => {
+          .then((info) => {
             // console.log(extract);
-            res.send(extract);
+						var language = user.getLanguage();
+						user.addItem({
+							title: info.title,
+							extract: info.extract,
+							url: `https://${language}.wikipedia.org/wiki/${encodedTitle}`
+						});
+						console.log(user);
+            res.send(info);
           })
           .catch((err) => {
             console.log(err);
@@ -72,18 +81,29 @@ app.get('/Info/:query/:language', (req, res) => {
         getQueryLanguage(encodedTitle, language)
           .then((translateTitle) => {
             getExtract(translateTitle, language)
-              .then((extract) => {
-                // console.log(extract);
-                res.send(extract);
-              })
+						.then((info) => {
+							// console.log(extract);
+							var language = user.getLanguage();
+							user.addItem({
+								title: info.title,
+								extract: info.extract,
+								url: `https://${language}.wikipedia.org/wiki/${info.title}`
+							});
+							// console.log(user);
+							res.send(info);
+						})
               .catch((err) => {
                 console.log(err);
               });
           });
       }
     });
-
 });
+
+app.get('/List', (req, res) => {
+	console.log(user.getList());
+	res.send(user.getList());
+})
 
 app.listen(3000, ()=> {
 	console.log('Start on port 3000');
