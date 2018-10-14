@@ -54,7 +54,6 @@ export default class Language extends React.Component {
               </View>
             </TouchableOpacity>
           <View style={styles.container}>
-            <View style={styles.container}>
 
                 <View style={{ paddingVertical: 5 }} />
 
@@ -98,6 +97,7 @@ export default class Language extends React.Component {
                 </TouchableOpacity>
 
             </View>
+          </View>
         );
     }
 }

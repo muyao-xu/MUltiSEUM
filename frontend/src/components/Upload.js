@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import Header from './Header';
 
 import ImagePicker from 'react-native-image-picker';
 //import Language from './src/Language';
@@ -199,13 +198,7 @@ export default class Upload extends React.Component {
         }
 
         <TouchableOpacity style={styles.buttonStyle} onPress={() =>
-          navigate('Result', this.state.information
-          // {
-            // title: this.state.information.title,
-            // extract: this.state.information.extract,
-            // url: this.state.information.url
-          // }
-        )}
+          navigate('Result', this.state.information)}
         >
           <View style={styles.textStyle}>
           <Text>Next</Text>
