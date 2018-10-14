@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Linking, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Linking, ImageBackground, TouchableOpacity } from 'react-native';
 import Button from './Button';
 
 export default class Output extends React.Component {
@@ -21,7 +21,14 @@ export default class Output extends React.Component {
       <ImageBackground source={this.state.bgImage}
         style={styles.bg}
       >
+
       <View style={styles.container}>
+      <TouchableOpacity style={styles.headerStyle} onPress={() =>
+        navigate('ArtList')}>
+        <View>
+          <Text style={{  color: 'white' }}>MyList</Text>
+        </View>
+      </TouchableOpacity>
         <Text style={styles.titleStyle}>{info.title}</Text>
         <View style={{ paddingVertical: 5 }} />
         <Text style={styles.extractStyle}>{info.extract}</Text>
@@ -65,6 +72,19 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     marginTop: 300
-  }
+  },
+  headerStyle: {
+		//backgroundColor: '#F8F8F8',
+		justifyContent: 'center',
+		alignItems: 'flex-end',
+		height: 50,
+		//paddingTop: 15,
+    paddingRight: 10,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: 0.2,
+		elevation: 2,
+		position: 'relative'
+	},
 
 });
