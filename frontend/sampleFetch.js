@@ -32,4 +32,11 @@ fetch('http://localhost:3000/Info/sunflowers%20van%20gogh/en')
     console.error(error);
   });
 
-// POST /OCRTEXT
+// GET /List
+fetch('http://localhost:3000/List')
+  .then((response) => {
+    var description = response._bodyText;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
