@@ -3,10 +3,6 @@ class User {
     this._list = [];
   }
 
-  setName(name) {
-    this._name = name;
-  }
-
   setLanguage(language) {
     this.language = language;
   }

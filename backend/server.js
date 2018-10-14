@@ -21,13 +21,11 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/imgUpload.html');
 });
 
-app.get('/user/:username/:language', (req, res) => {
-	var name = req.params.username;
+app.get('/user/:language', (req, res) => {
 	var language = req.params.language;
 
-	user.setName(name);
 	user.setLanguage(language);
-	console.log(user);
+	// console.log(user);
 });
 
 app.post('/ImgInfo', (req, res) => {
